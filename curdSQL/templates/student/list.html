@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	{% if messages %}
+		<ul class="messages">
+		{% for message in messages %}
+			<li {% if message.tags %}class="{{message.tags}}"{% endif %}>{{message}}</li>
+		{% endfor %}
+		</ul>
+	{% endif %}
+	<span>
+		<a href="{% url 'create' %}" class="btn">New</a>
+	</span>
+	<table>
+		{% for obj in object %}
+		<tr>
+			<td>
+				<a href="{{ obj.getUpdateUrl }}">edit</a>
+			</td>
+			<td>
+				{{obj.name}}	
+			</td>
+			<td>
+				{{obj.age}}	
+			</td>
+			<td>
+				<a href="{{ obj.getDeleteUrl }}">delete</a>
+			</td>
+		</tr>
+		{% endfor %}
+	</table>
+</body>
+</html>
